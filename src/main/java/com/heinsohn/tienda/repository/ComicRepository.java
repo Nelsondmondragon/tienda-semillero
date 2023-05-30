@@ -1,7 +1,10 @@
 package com.heinsohn.tienda.repository;
 
+import com.heinsohn.tienda.dto.ConsultaNombrePrecioDto;
 import com.heinsohn.tienda.enums.EstadoEnum;
 import com.heinsohn.tienda.model.Comic;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -15,7 +18,7 @@ import java.util.List;
 public interface ComicRepository extends JpaRepository<Comic, Long> {
 
     @Query("SELECT c.nombre FROM Comic c")
-    List<Comic> findAllNamesComics();
+    Page<String> findAllNamesComics(PageRequest pageRequest);
 
     @Query("SELECT c FROM Comic c WHERE c.id = :idComic")
     Comic obtenerComicPorId(@Param("idComic") Long id);
@@ -47,4 +50,11 @@ public interface ComicRepository extends JpaRepository<Comic, Long> {
     @Transactional
     int eliminarComicPorEstado(@Param("estado") EstadoEnum estadoEnum);
 
+
+    @Query(value = "SELECT SCNOMBRE,SCPRECIO from comic where  SCID = :idComic", nativeQuery = true)
+    Object[][] obtenerQueryNative(@Param("idComic") Long idComic);
+
+
+    @Query(value = "SELECT new com.heinsohn.tienda.dto.ConsultaNombrePrecioDto(c.nombre,c.precio) FROM Comic c where  c.id= :idComic ")
+    ConsultaNombrePrecioDto obtenerNombrePrecio(@Param("idComic") Long idComic);
 }

@@ -1,10 +1,14 @@
 package com.heinsohn.tienda.controller;
 
+import com.heinsohn.tienda.dto.ConsultaNombrePrecioDto;
 import com.heinsohn.tienda.enums.EstadoEnum;
 import com.heinsohn.tienda.model.Comic;
 import com.heinsohn.tienda.repository.ComicRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,15 +30,34 @@ public class SpringDataController {
     private ComicRepository comicRepository;
 
 
-    @GetMapping("/clase")
+    @GetMapping("/clase3")
+    public String test3() {
+
+        PageRequest page = PageRequest.of(1, 6, Sort.by("nombre").ascending());
+        Page<String> allNamesComics = this.comicRepository.findAllNamesComics(page);
+
+        List<String> content = allNamesComics.getContent();
+
+        System.out.println(Arrays.toString(content.toArray()));
+        Object[][] objects = this.comicRepository.obtenerQueryNative(1L);
+        String o = (String) objects[0][0];
+        ConsultaNombrePrecioDto consultaNombrePrecioDto = this.comicRepository.obtenerNombrePrecio(1L);
+        return "";
+    }
+
+
+    @GetMapping("/clase2")
     public String test2() {
-        List<Comic> allNamesComics = this.comicRepository.findAllNamesComics();
+//        List<Comic> allNamesComics = this.comicRepository.findAllNamesComics();
         Comic comic = this.comicRepository.obtenerComicPorId(1L);
-        List<Comic> comics = this.comicRepository.obtenerComicCharacterAndEstadoEnum("f", EstadoEnum.ACTIVO);
-        Comic comic1 = this.comicRepository.consultarComicPorNombre("bat");
+        List<Comic> comics = this.comicRepository.obtenerComicCharacterAndEstadoEnum("at", EstadoEnum.ACTIVO);
+        Comic comic1 = this.comicRepository.consultarComicPorNombre("Bat");
         Comic comic2 = this.comicRepository.actualizarEstadoComicPorId(EstadoEnum.INACTIVO,
-                2L);
+                7L);
         Comic comic3 = this.comicRepository.actualizarEstadoComicPorIdS(EstadoEnum.ACTIVO, Arrays.asList(1L, 3L));
+
+
+        this.comicRepository.eliminarComicPorEstado(EstadoEnum.INACTIVO);
         return "";
     }
 
