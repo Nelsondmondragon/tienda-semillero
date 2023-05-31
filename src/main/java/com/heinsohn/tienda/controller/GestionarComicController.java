@@ -1,7 +1,10 @@
 package com.heinsohn.tienda.controller;
 
 import com.heinsohn.tienda.dto.ComicDto;
+import com.heinsohn.tienda.exception.GestionarComicException;
+import com.heinsohn.tienda.exception.TiendaComicException;
 import com.heinsohn.tienda.interfaz.IGestionarComic;
+import com.heinsohn.tienda.util.Util;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,34 +15,36 @@ import java.io.IOException;
 @RestController
 @RequestMapping("tiendacomic")
 @RequiredArgsConstructor
-public class GestionarComicController {
+public class GestionarComicController extends Util {
 
 
     private final IGestionarComic gestionarComic;
 
     @PostMapping("")
-    public ResponseEntity<?> create(@RequestBody ComicDto comicDto) throws IOException {
+    public ResponseEntity<?> createComic(@RequestBody ComicDto comicDto) throws TiendaComicException {
         this.gestionarComic.createComic(comicDto);
-        return ResponseEntity.noContent().build();
+        return buildResponse("Se ha creado el comic exitosamente");
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> findById(@PathVariable Long idComic) throws IOException {
+    public ResponseEntity<?> findById(@PathVariable Long idComic) throws TiendaComicException {
 
-        return new ResponseEntity<>(this.gestionarComic.findById(idComic), HttpStatus.OK);
+        return buildResponse(this.gestionarComic.findById(idComic));
     }
 
 
     @GetMapping("")
-    public ResponseEntity<?> findByAll() throws IOException {
-        return new ResponseEntity<>(this.gestionarComic.findAll(), HttpStatus.OK);
+    public ResponseEntity<?> findByAll() throws TiendaComicException {
+        return buildResponse(this.gestionarComic.findAll());
     }
 
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteById(@PathVariable Long idComic) throws IOException {
+    public ResponseEntity<?> deleteById(@PathVariable Long idComic) throws GestionarComicException {
         this.gestionarComic.deleteById(idComic);
-        return ResponseEntity.noContent().build();
+        String response = "El comic " + idComic + " ha sido eliminado";
+
+        return buildResponse(response);
     }
 
 
