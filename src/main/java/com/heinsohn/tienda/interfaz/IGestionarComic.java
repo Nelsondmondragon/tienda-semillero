@@ -1,6 +1,7 @@
 package com.heinsohn.tienda.interfaz;
 
 import com.heinsohn.tienda.dto.ComicDto;
+import com.heinsohn.tienda.dto.ConsultaNombrePrecioDto;
 import com.heinsohn.tienda.exception.GestionarComicException;
 import com.heinsohn.tienda.exception.TiendaComicException;
 
@@ -16,4 +17,7 @@ public interface IGestionarComic {
     List<ComicDto> findAll() throws TiendaComicException;
 
     void deleteById(Long idComic) throws GestionarComicException;
+
+    ConsultaNombrePrecioDto consultarNombrePrecioComic(Long idComic) throws TiendaComicException, GestionarComicException;
+
 }
