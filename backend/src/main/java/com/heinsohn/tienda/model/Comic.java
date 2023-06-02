@@ -2,8 +2,7 @@ package com.heinsohn.tienda.model;
 
 import com.heinsohn.tienda.enums.EstadoEnum;
 import com.heinsohn.tienda.enums.TematicaEnum;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.lang.annotation.Native;
@@ -14,6 +13,9 @@ import java.time.LocalDate;
 @Setter
 @Entity
 @Table(name = "COMIC")
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class Comic {
     @Id
     @SequenceGenerator(name = "COMIC_SCID_GENERATOR", sequenceName = "SEQ_COMIC", allocationSize = 1)
@@ -30,20 +32,22 @@ public class Comic {
     @Column(name = "SCTEMATICA")
     @Enumerated(EnumType.STRING)
     private TematicaEnum tematicaEnum;
-    @Column(name = "SCPRECIO")
-    private BigDecimal precio;
-    @Column(name = "SCFECHA_VENTA")
-    private LocalDate fechaVenta;
-    @Column(name = "SCCOLOR")
-    private Boolean color;
     @Column(name = "SCCOLECCION")
     private String coleccion;
     @Column(name = "SCNUMEROPAGINAS")
     private Integer numeroPaginas;
-    @Column(name = "SCCANTIDAD")
-    private Integer cantidad;
+    @Column(name = "SCPRECIO")
+    private BigDecimal precio;
+    @Column(name = "SCAUTORES")
+    private String autores;
+    @Column(name = "SCCOLOR")
+    private Boolean color;
+    @Column(name = "SCFECHA_VENTA")
+    private LocalDate fechaVenta;
     @Column(name = "SCESTADO")
     @Enumerated(EnumType.STRING)
     private EstadoEnum estadoEnum;
+    @Column(name = "SCCANTIDAD")
+    private Integer cantidad;
 
 }
