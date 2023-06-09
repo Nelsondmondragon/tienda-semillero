@@ -14,6 +14,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CrearPersonaComponent } from './crear-persona/crear-persona.component';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TypographyComponent,
     HomeComponent,
     NotificationsComponent,
+    CrearPersonaComponent,
   ]
 })
 
