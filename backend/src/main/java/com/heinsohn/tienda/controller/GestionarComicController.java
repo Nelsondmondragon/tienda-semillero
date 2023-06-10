@@ -1,8 +1,10 @@
 package com.heinsohn.tienda.controller;
 
 import com.heinsohn.tienda.dto.ComicDto;
+import com.heinsohn.tienda.dto.SalidaDto;
 import com.heinsohn.tienda.exception.GestionarComicException;
 import com.heinsohn.tienda.exception.TiendaComicException;
+import com.heinsohn.tienda.interfaz.IConsultarComicTamanioNombre;
 import com.heinsohn.tienda.interfaz.IGestionarComic;
 import com.heinsohn.tienda.util.Util;
 import lombok.RequiredArgsConstructor;
@@ -20,10 +22,10 @@ import java.io.IOException;
 public class GestionarComicController extends Util {
 
 
-
     private final IGestionarComic gestionarComic;
 
     private final static Logger LOG = LogManager.getLogger(GestionarComicController.class);
+
 
     @PostMapping("")
     public ResponseEntity<?> createComic(@RequestBody ComicDto comicDto) throws TiendaComicException {

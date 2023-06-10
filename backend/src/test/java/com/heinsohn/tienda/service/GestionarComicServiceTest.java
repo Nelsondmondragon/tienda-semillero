@@ -13,6 +13,7 @@ import java.math.BigDecimal;
 import com.heinsohn.tienda.dto.ConsultaNombrePrecioDto;
 import com.heinsohn.tienda.exception.GestionarComicException;
 import com.heinsohn.tienda.exception.TiendaComicException;
+import com.heinsohn.tienda.model.Comic;
 import com.heinsohn.tienda.repository.ComicRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -38,6 +39,7 @@ class GestionarComicServiceTest {
     public void setup() {
         MockitoAnnotations.openMocks(this);
     }
+
 
     @Test
     public void whenConsultarNombrePrecioComicGivenGestionarComicException_thenError() throws TiendaComicException {

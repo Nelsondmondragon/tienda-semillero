@@ -6,6 +6,7 @@ import com.heinsohn.tienda.enums.JSONResponseStatus;
 import org.springframework.http.HttpStatus;
 
 public abstract class Util {
+    private static final String SUCCESS = "Comics procesados exitosamente";
 
     /**
      * @param <T>
@@ -15,6 +16,26 @@ public abstract class Util {
     protected <T> JSONResponse<T> buildResponse(T data) {
         return new JSONResponse<>(JSONResponseStatus.SUCCESS.toString(), HttpStatus.OK, data);
     }
+
+    /**
+     * @param <T>
+     * @param data
+     * @return <T> ApiResponseEntity<T>
+     */
+    protected <T> JSONResponse<T> buildResponseCustom(T data) {
+        return new JSONResponse<>(JSONResponseStatus.SUCCESS.toString(), HttpStatus.OK, data, SUCCESS);
+    }
+
+
+    /**
+     * @param <T>
+     * @param data
+     * @return <T> ApiResponseEntity<T>
+     */
+//    protected <T> JSONResponse<T> buildResponseCustom(T data) {
+//        return new JSONResponse<>(JSONResponseStatus.SUCCESS.toString(), HttpStatus.OK, data);
+//    }
+
 
     /**
      * @param <T>
