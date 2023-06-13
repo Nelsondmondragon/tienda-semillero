@@ -1,5 +1,7 @@
 package com.heinsohn.tienda.repository;
 
+import com.heinsohn.tienda.dto.ComicDto;
+import com.heinsohn.tienda.dto.ComicNombreDto;
 import com.heinsohn.tienda.dto.ConsultaNombrePrecioDto;
 import com.heinsohn.tienda.enums.EstadoEnum;
 import com.heinsohn.tienda.exception.GestionarComicException;
@@ -88,4 +90,13 @@ public interface ComicRepository extends JpaRepository<Comic, Long> {
 
     @Query(value = "SELECT new com.heinsohn.tienda.dto.ConsultaNombrePrecioDto(c.nombre,c.precio) FROM Comic c where  c.id= :idComic ")
     ConsultaNombrePrecioDto obtenerNombreYPrecio(@Param("idComic") Long idComic) throws GestionarComicException;
+
+    @Query(value = "SELECT c.nombre FROM Comic c where LENGTH(c.nombre)>= :lengthComic ")
+    List<String> consultarComicTamanioNombreMayor(@Param("lengthComic") Integer lengthComic);
+
+
+    @Query(value = "SELECT c.nombre FROM Comic c where LENGTH(c.nombre)< :lengthComic ")
+    List<String> consultarComicTamanioNombreMenor(@Param("lengthComic") Integer lengthComic);
+
+
 }

@@ -2,7 +2,9 @@ package com.heinsohn.tienda.service;
 
 import com.heinsohn.tienda.dto.ComicDto;
 import com.heinsohn.tienda.dto.ConsultaNombrePrecioDto;
+import com.heinsohn.tienda.enums.EstadoEnum;
 import com.heinsohn.tienda.enums.TICOEnum;
+import com.heinsohn.tienda.enums.TematicaEnum;
 import com.heinsohn.tienda.exception.GestionarComicException;
 import com.heinsohn.tienda.exception.TiendaComicException;
 import com.heinsohn.tienda.interfaz.IGestionarComic;
@@ -47,6 +49,9 @@ public class GestionarComicService implements IGestionarComic {
 
     }
 
+
+
+
     @Override
     public ComicDto findById(Long idComic) throws TiendaComicException {
         Optional<Comic> comic = this.comicRepository.findById(idComic);
@@ -72,7 +77,7 @@ public class GestionarComicService implements IGestionarComic {
     }
 
     @Override
-    public ConsultaNombrePrecioDto consultarNombrePrecioComic(Long idComic) throws GestionarComicException, TiendaComicException  {
+    public ConsultaNombrePrecioDto consultarNombrePrecioComic(Long idComic) throws GestionarComicException, TiendaComicException {
         if (idComic <= 0) {
             throw new GestionarComicException(TICOEnum.TICO_0001, idComic.toString(), "1", "5", "8");
         }
