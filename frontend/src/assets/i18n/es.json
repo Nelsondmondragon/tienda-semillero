@@ -1,0 +1,11 @@
+{
+    "gestionar.comic.titulo.parametros" : "Gestionar Comic {{ mensaje }} {{ mensaje2 }}",
+    "gestionar.comic.titulo" : "Gestionar Comic",
+    "gestionar.comic.label.nombre" : "Nombre:",
+    "gestionar.comic.label.editorial" : "Editorial:",
+    "gestionar.comic.label.tematica" : "Tematica:",
+    "gestionar.comic.items.tematica.deportivo" : "Deportivo",
+    "gestionar.comic.items.tematica.cienciaFiccion" : "Ciencia ficci\u00f3n",
+    "gestionar.comic.boton.crear" : "Crear",
+    "gestionar.comic.creacion.exitosa" : "Se ha creado exitosamente el comic"
+}

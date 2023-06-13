@@ -1,3 +1,5 @@
+
+<h1>Crear Persona</h1>
 <p>crear-persona works!</p>
 <h1>{{ nombreInstructor }}</h1>
 <pre>{{ comicDTO | json }}</pre>
@@ -5,13 +7,14 @@
 <pre>{{ objetoImagen | json }}</pre>
 
 <!-- <img src="https://cdn.atomix.vg/wp-content/uploads/2020/01/spaw.jpg" height="400" width="300"> -->
-<img [src]="objetoImagen.path" [height]="objetoImagen.height" width="objetoImagen.width"
-    (click)="imprimirPathImage(objetoImagen.path)">
+<img [src]="objetoImagen.path" [height]="objetoImagen.height" width="objetoImagen.width" (click)="imprimirPathImage(objetoImagen.path)">
 
 <div class="row">
     <div class="col-md-2"><label>{{ labelImagen }}</label></div>
     <!-- <div class="col-md-6"><input type="text" class="form-control" id="pathImage" [(ngModel)]="objetoImagen.path" name="pathImage"> -->
-    <div class="col-md-6"><input type="text" class="form-control" id="pathImage" [(ngModel)]="opcion" name="pathImage"
+        <div class="col-md-6"><input type="text" class="form-control" id="pathImage" [(ngModel)]="opcion" name="pathImage"
             (focusout)="seleccionarImagen(opcion)">
     </div>
 </div>
+
+

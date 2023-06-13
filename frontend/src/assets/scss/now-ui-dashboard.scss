@@ -50,3 +50,9 @@
  @import "now-ui-dashboard/cards/card-map";
 
  @import "now-ui-dashboard/responsive";
+
+ .modal-backdrop {
+    z-index: 1050 !important;
+}
+
+ 

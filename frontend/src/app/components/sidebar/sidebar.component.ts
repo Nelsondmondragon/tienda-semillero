@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 declare interface RouteInfo {
-    path: string;
+    url: string;
     title: string;
     icon: string;
     class: string;
 }
 export const ROUTES: RouteInfo[] = [
-    { path: '/inicio', title: 'Inicio',  icon:'design_app', class: '' },
-    { path: '/gestionar-comic', title: 'Gestionar comic',  icon:'location_map-big', class: '' },
-    { path: '/inventario-comic', title: 'Inventario comic',  icon:'business_chart-bar-32', class: '' },
+    { url: '/inicio', title: 'Inicio',  icon:'design_app', class: '' },
+    { url: '/gestionar-comic', title: 'Gestionar comic',  icon:'location_map-big', class: '' },
+    { url: '/inventario-comic', title: 'Inventario comic',  icon:'business_chart-bar-32', class: '' },
 ];
 
 @Component({

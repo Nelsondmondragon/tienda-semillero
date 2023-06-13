@@ -13,12 +13,13 @@ import PerfectScrollbar from 'perfect-scrollbar';
 })
 export class AdminLayoutComponent implements OnInit {
   private _router: Subscription;
-  private lastPoppedUrl: string;
+  private lastPoppedUrl: String;
   private yScrollStack: number[] = [];
 
   constructor( public location: Location, private router: Router) {}
 
   ngOnInit() {
+    
       const isWindows = navigator.platform.indexOf('Win') > -1 ? true : false;
 
       if (isWindows && !document.getElementsByTagName('body')[0].classList.contains('sidebar-mini')) {

@@ -11,10 +11,18 @@ import { NotificationsComponent } from '../../notifications/notifications.compon
 import { ChartsModule } from 'ng2-charts';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CrearPersonaComponent } from './crear-persona/crear-persona.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { GestionarComicComponent } from './gestionar-comic/gestionar-comic.component';
+import { ConsultarComicComponent } from './consultar-comic/consultar-comic.component';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   imports: [
@@ -25,7 +33,14 @@ import { CrearPersonaComponent } from './crear-persona/crear-persona.component';
     NgbModule,
     ReactiveFormsModule,
     HttpClientModule,    
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+      }
+    })
   ],
   declarations: [
     UserProfileComponent,
@@ -34,6 +49,8 @@ import { CrearPersonaComponent } from './crear-persona/crear-persona.component';
     HomeComponent,
     NotificationsComponent,
     CrearPersonaComponent,
+    GestionarComicComponent,
+    ConsultarComicComponent, 
   ]
 })
 
