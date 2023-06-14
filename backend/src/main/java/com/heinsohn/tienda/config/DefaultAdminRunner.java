@@ -28,7 +28,7 @@ public class DefaultAdminRunner implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        this.createComics();
+//        this.createComics();
     }
 
     /**
@@ -38,11 +38,11 @@ public class DefaultAdminRunner implements ApplicationRunner {
      * @throws TiendaComicException
      */
     private void createComics() throws TiendaComicException {
-        for (int i = 0; i < 20; i++) {
-            this.gestionarComic.createComic(
-                    this.generarComic(i % 2 == 0, i + 2)
-            );
-        }
+//        for (int i = 0; i < 20; i++) {
+//            this.gestionarComic.createComic(
+//                    this.generarComic(i % 2 == 0, i + 2)
+//            );
+//        }
     }
 
     /**
@@ -54,20 +54,20 @@ public class DefaultAdminRunner implements ApplicationRunner {
      * @param numberString indica la longitud de la cadena de sus atributos.
      * @return devuelve un comic, con unos atributos aleatorios.
      */
-    private ComicDto generarComic(Boolean color, int numberString) {
-        return new ComicDto(this.generateString(numberString),
-                this.generateString(numberString),
-                this.selectTematicaEnum(),
-                this.generateString(numberString),
-                numberString,
-                new BigDecimal(numberString),
-                this.generateString(numberString),
-                color,
-                LocalDate.now(),
-                this.selectEstadoEnum(),
-                numberString
-        );
-    }
+//    private ComicDto generarComic(Boolean color, int numberString) {
+//        return new ComicDto(this.generateString(numberString),
+//                this.generateString(numberString),
+//                this.selectTematicaEnum(),
+//                this.generateString(numberString),
+//                numberString,
+//                new BigDecimal(numberString),
+//                this.generateString(numberString),
+//                color,
+//                LocalDate.now(),
+//                this.selectEstadoEnum(),
+//                numberString
+//        );
+//    }
 
     /**
      * <p>

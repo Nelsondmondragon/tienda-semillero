@@ -8,6 +8,10 @@ public enum TICOEnum {
 
     TICO_0006("La longitud máxima permitida es de %s caracteres", "TICO_0006"),
 
+    TICO_0007("El comic seleccionado no cuenta con stock en bodega", "TICO_0007"),
+    TICO_0008("La cantidad existente del comic es:  %s, y supera la ingresada", "TICO_0008"),
+    TICO_0009("No existe el comic con el id ingresado", "TICO_0009"),
+
     ;
 
     private String message;

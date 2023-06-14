@@ -20,12 +20,12 @@
                         <h5>{{ mensajeEjecucion }}</h5>
                         <button type="button" aria-hidden="true" class="close" (click)="cerrar()">
                             <i class="now-ui-icons ui-1_simple-remove"></i>
-                        </button>     
+                        </button>
                     </div>
 
-                    <div class="row">
+                    <!-- <div class="row">
                         <pre>{{ comicDto | json }}</pre>
-                    </div>
+                    </div> -->
                     <h4>{{ 'gestionar.comic.titulo' | translate }}</h4>
                 </div>
 
@@ -36,19 +36,20 @@
                             <div class="col-6">
                                 <label for="txtNombre">{{ 'gestionar.comic.label.nombre' | translate }}</label>
                                 <input type="text" class="form-control" maxlength="50" id="txtNombre"
-                                    formControlName="nombre" [ngClass]="{ 'is-invalid' : validoFormulario && f.nombre.errors }">
-                                    <div *ngIf="validoFormulario && f.nombre.errors">
-                                        <span class="text-danger" *ngIf="f.nombre.errors.required">Campo requerido</span>
-                                        <!-- <span class="text-danger" *ngIf="f.nombre.errors.maxLength">Solo se permite un maximo de 50 caracteres</span>
+                                    formControlName="nombre"
+                                    [ngClass]="{ 'is-invalid' : validoFormulario && f.nombre.errors }">
+                                <div *ngIf="validoFormulario && f.nombre.errors">
+                                    <span class="text-danger" *ngIf="f.nombre.errors.required">Campo requerido</span>
+                                    <!-- <span class="text-danger" *ngIf="f.nombre.errors.maxLength">Solo se permite un maximo de 50 caracteres</span>
                                         <span class="text-danger" *ngIf="f.nombre.errors.email">El campo ingresado no tiene formato email SDAFas</span> -->
-                                    </div>
+                                </div>
                             </div>
                             <!-- Finaliza Campo nombre comic -->
 
                             <div class="col-6">
                                 <label for="txtEditorial">{{ 'gestionar.comic.label.editorial' | translate }}</label>
-                                <input type="text" class="form-control" maxlength="50" 
-                                    id="txtEditorial" formControlName="editorial" 
+                                <input type="text" class="form-control" maxlength="50" id="txtEditorial"
+                                    formControlName="editorial"
                                     [ngClass]="{ 'is-invalid' : validoFormulario && f.editorial.errors }">
                                 <div *ngIf="validoFormulario && f.editorial.errors">
                                     <span class="text-danger">Campo requerido</span>
@@ -60,8 +61,9 @@
                             <!-- Inicia lista tematica comic -->
                             <div class="col-6">
                                 <label for="tematica">{{ 'gestionar.comic.label.tematica' | translate }}</label>
-                                <select class="form-control" id="tematica" formControlName="tematicaEnum" (change)="agregarValidacionColeccion()"
-                                        [ngClass]="{ 'is-invalid' : validoFormulario && f.tematicaEnum.errors }">
+                                <select class="form-control" id="tematica" formControlName="tematicaEnum"
+                                    (change)="agregarValidacionColeccion()"
+                                    [ngClass]="{ 'is-invalid' : validoFormulario && f.tematicaEnum.errors }">
                                     <option value="AVENTURAS">Aventuras</option>
                                     <option value="BELICO">Belico</option>
                                     <option value="DEPORTIVO">{{ 'gestionar.comic.items.tematica.deportivo' | translate
@@ -80,7 +82,8 @@
 
                             <div class="col-6">
                                 <label for="txtColeccion">Coleccion:</label>
-                                <input type="text" class="form-control" maxlength="50" [ngClass]="{ 'is-invalid' : validoFormulario && f.coleccion.errors }"
+                                <input type="text" class="form-control" maxlength="50"
+                                    [ngClass]="{ 'is-invalid' : validoFormulario && f.coleccion.errors }"
                                     id="txtColeccion" formControlName="coleccion">
                                 <div *ngIf="validoFormulario && f.coleccion.errors">
                                     <span class="text-danger">Campo requerido</span>
@@ -112,21 +115,20 @@
                         <div class="row">
                             <div class="col-6">
                                 <label for="autores">Autores:</label>
-                                <textarea class="form-control" id="autores" rows="3"
-                                    formControlName="autores">
+                                <textarea class="form-control" id="autores" rows="3" formControlName="autores">
                                 </textarea>
                             </div>
 
                             <label for="color">A color:</label>
                             <br>
                             <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="customRadioInline1" [value]="true"
-                                    class="custom-control-input" formControlName="color">
+                                <input type="radio" id="customRadioInline1" [value]="true" class="custom-control-input"
+                                    formControlName="color">
                                 <label class="custom-control-label" for="customRadioInline1">Si</label>
                             </div>
                             <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="customRadioInline2" [value]="false"
-                                    class="custom-control-input" formControlName="color">
+                                <input type="radio" id="customRadioInline2" [value]="false" class="custom-control-input"
+                                    formControlName="color">
                                 <label class="custom-control-label" for="customRadioInline2">No</label>
                             </div>
                         </div>
@@ -173,14 +175,18 @@
                                     <td>{{comic.precio | number: '.2'}}</td>
                                     <td>{{comic.color ? 'Si' : 'No' }}</td>
                                     <td>{{comic.fechaVenta | date:"MM/dd/yy hh:mm:ss" }}</td>
-                                    <td>{{comic.estado }}</td>
+                                    <td>{{comic.estadoEnum }}</td>
                                     <td>{{comic.cantidad }}</td>
                                     <td class=" text-primary">
-                                        <i class="fas fa-search 2x ml-1" title="Consultar" (click)="irConsultaComic(comic)"></i>
+                                        <i class="fas fa-search 2x ml-1" title="Consultar"
+                                            (click)="irConsultaComic(comic)"></i>
                                         <i class="fas fa-pencil-alt 2x ml-1" title="Editar"></i>
                                         <!-- <i class="far fa-times-circle 2x ml-1" title="Eliminar" (click)="abrirmodal(content, comic.id)"></i> -->
-                                        <i class="far fa-times-circle 2x ml-1" title="Eliminar" (click)="confirmarEliminacion(comic.id)"></i>
-                                        
+                                        <i class="far fa-times-circle 2x ml-1" title="Eliminar"
+                                            (click)="confirmarEliminacion(comic.id)"></i>
+                                        <i class="fas fa-dollar-sign 2x ml-1" title="Comprar"
+                                            (click)="irComprarComic(comic)"></i>
+
                                     </td>
                                 </tr>
                             </tbody>
@@ -191,7 +197,7 @@
                 <!-- MODAL -->
                 <ng-template #content let-c="close" let-d="dismiss">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="modal-basic-title">Confirmacion</h4>                        
+                        <h4 class="modal-title" id="modal-basic-title">Confirmacion</h4>
                     </div>
                     <div class="modal-body">
                         <p>Estas seguro de eliminar el comic seleccionado?</p>

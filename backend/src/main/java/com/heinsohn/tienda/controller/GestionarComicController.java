@@ -19,6 +19,7 @@ import java.io.IOException;
 @RestController
 @RequestMapping("tiendacomic")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200")
 public class GestionarComicController extends Util {
 
 
@@ -36,7 +37,7 @@ public class GestionarComicController extends Util {
         return buildResponse(response);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{idComic}")
     public ResponseEntity<?> findById(@PathVariable Long idComic) throws TiendaComicException {
 
         return buildResponse(this.gestionarComic.findById(idComic));

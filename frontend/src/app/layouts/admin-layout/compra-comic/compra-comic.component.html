@@ -1,0 +1,36 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="title">Comprar Comic</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-6">
+                    <label for="txtNombre" translate>gestionarComic.nombre</label>
+                    <input id="txtNombre" type="text" class="form-control" [(ngModel)]="comicDTO.nombre" disabled>
+                </div>
+
+                <div class="col-6">
+                    <label for="txtNumPaginas">Cantidad comprar:</label>
+                    <input id="txtNumPaginas" type="number" class="form-control" [(ngModel)]="cantidad" >
+                    <div *ngIf="!cantidadValida">
+                        <span class="text-danger" >Cantidad debe ser mayor a 0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <button type="button" class="btn btn-secondary" (click)="comprarComic(comicDTO.id)">Comprar</button>
+                </div>
+                <div class="col-6 text-right ">
+                    <button type="button" class="btn btn-primary" (click)="regresar()">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

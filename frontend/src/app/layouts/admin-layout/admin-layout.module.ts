@@ -19,6 +19,9 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { GestionarComicComponent } from './gestionar-comic/gestionar-comic.component';
 import { ConsultarComicComponent } from './consultar-comic/consultar-comic.component';
+import { CompraComicComponent } from './compra-comic/compra-comic.component';
+import { ModalComponent } from './modal/modal.component';
+import { ModalSuccessComponent } from './modal-success/modal-success.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -50,7 +53,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     NotificationsComponent,
     CrearPersonaComponent,
     GestionarComicComponent,
-    ConsultarComicComponent, 
+    ConsultarComicComponent,
+    CompraComicComponent,
+    ModalComponent,
+    ModalSuccessComponent, 
   ]
 })
 

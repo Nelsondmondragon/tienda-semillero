@@ -37,7 +37,7 @@ export class ComicDTO {
  
      public fechaVenta: Date;
 
-     public estado: EstadoEnum;
+     public estadoEnum: EstadoEnum;
  
      constructor() {
      }

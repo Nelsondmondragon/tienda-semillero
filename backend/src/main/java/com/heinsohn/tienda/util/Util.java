@@ -26,6 +26,9 @@ public abstract class Util {
         return new JSONResponse<>(JSONResponseStatus.SUCCESS.toString(), HttpStatus.OK, data, SUCCESS);
     }
 
+//    protected <T> JSONResponse<T> buildResponseCustom(T data, String message) {
+//        return new JSONResponse<>(JSONResponseStatus.SUCCESS.toString(), HttpStatus.OK, data, message);
+//    }
 
     /**
      * @param <T>

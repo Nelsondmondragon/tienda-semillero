@@ -18,6 +18,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class ComicDto implements Serializable {
 
+    private Long id;
     private String nombre;
     private String editorial;
     @Enumerated(EnumType.STRING)

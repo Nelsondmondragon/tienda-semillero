@@ -48,4 +48,15 @@ public class ExceptionResponseHandler extends ResponseEntityExceptionHandler {
                 new ErrorResponse(errors, ex.getCode()));
     }
 
+    @ExceptionHandler({CompraComicException.class})
+    public JSONResponse<Object> handlerGestionarComicException(CompraComicException ex) {
+        LOG.error("General CompraComicException: " + ex);
+
+        String message = ex.getMessage();
+        String errors = String.format(message, ex.getParams());
+
+        return new JSONResponse<>(JSONResponseStatus.ERROR.toString(), HttpStatus.CONFLICT,
+                new ErrorResponse(errors, ex.getCode()));
+    }
+
 }
