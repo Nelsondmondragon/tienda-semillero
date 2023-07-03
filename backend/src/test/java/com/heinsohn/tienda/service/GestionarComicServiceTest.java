@@ -72,4 +72,6 @@ class GestionarComicServiceTest {
         ConsultaNombrePrecioDto consultaNombrePrecioDto1 = this.gestionarComicService.consultarNombrePrecioComic(1L);
         assertNotNull(consultaNombrePrecioDto1);
     }
+
+
 }
