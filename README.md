@@ -1,2 +1,1 @@
-# JTA:
-Sirve para gestionar transacciones.
+# Semillero H
